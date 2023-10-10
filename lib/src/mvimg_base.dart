@@ -45,7 +45,7 @@ class Mvimg {
       final marker = input.getBytes(offset, offset + 2);
       if (marker[0] != 0xFF) {
         throw Exception(
-            'Not a jpeg file, the bytes of offset $offset is not 0xFF');
+            'Can not find exif, offset: $offset, marker: ${marker[0]}');
       }
       offset += 2;
 
@@ -90,7 +90,7 @@ class Mvimg {
     final videoOffset = infoElement?.getAttribute('GCamera:MicroVideoOffset');
 
     if (videoOffset == null) {
-      throw Exception('Not a mvimg file');
+      throw Exception('Can not find video offset');
     }
 
     final videoOffsetInt = int.parse(videoOffset);
