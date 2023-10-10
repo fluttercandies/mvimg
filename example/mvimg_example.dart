@@ -6,23 +6,27 @@ import 'package:mvimg/mvimg.dart';
 void main() {
   final mvimg = Mvimg(FileBufferInput.fromPath('assets/test.jpg'));
   mvimg.decode();
+  try {
+    if (!mvimg.isMvimg()) {
+      print('not mvimg');
+      return;
+    }
 
-  print(mvimg.isMvimg());
+    final img = mvimg.getImageBytes();
+    final video = mvimg.getVideoBytes();
 
-  final img = mvimg.getImageBytes();
-  final video = mvimg.getVideoBytes();
+    final videoOutputPath = 'assets/split/output.mp4';
+    final imgOutputPath = 'assets/split/output.jpg';
 
-  final videoOutputPath = 'assets/split/output.mp4';
-  final imgOutputPath = 'assets/split/output.jpg';
+    final videoFile = File(videoOutputPath);
+    final imgFile = File(imgOutputPath);
 
-  final videoFile = File(videoOutputPath);
-  final imgFile = File(imgOutputPath);
+    videoFile.createSync(recursive: true);
+    imgFile.createSync(recursive: true);
 
-  videoFile.createSync(recursive: true);
-  imgFile.createSync(recursive: true);
-
-  videoFile.writeAsBytesSync(video);
-  imgFile.writeAsBytesSync(img);
-
-  mvimg.dispose();
+    videoFile.writeAsBytesSync(video);
+    imgFile.writeAsBytesSync(img);
+  } finally {
+    mvimg.dispose();
+  }
 }

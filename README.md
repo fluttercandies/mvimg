@@ -1,39 +1,61 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# mvimg
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+A library for handle mvimg.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+The file type used in some android device.
+It like livephoto in iphone.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The file is composed of two files, jpg and mp4.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Usually, the jpg name is MVIMG_XXXXX.jpg.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### Add dependency
 
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  mvimg: ^1.0.0
 ```
 
-## Additional information
+### Code
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+import 'dart:io';
+
+import 'package:buff/buff_io.dart';
+import 'package:mvimg/mvimg.dart';
+
+void main() {
+  final mvimg = Mvimg(FileBufferInput.fromPath('assets/test.jpg'));
+  mvimg.decode();
+  try {
+    if (!mvimg.isMvimg()) {
+      print('not mvimg');
+      return;
+    }
+
+    final img = mvimg.getImageBytes();
+    final video = mvimg.getVideoBytes();
+
+    final videoOutputPath = 'assets/split/output.mp4';
+    final imgOutputPath = 'assets/split/output.jpg';
+
+    final videoFile = File(videoOutputPath);
+    final imgFile = File(imgOutputPath);
+
+    videoFile.createSync(recursive: true);
+    imgFile.createSync(recursive: true);
+
+    videoFile.writeAsBytesSync(video);
+    imgFile.writeAsBytesSync(img);
+  } finally {
+    mvimg.dispose();
+  }
+}
+
+```
+
+## License
+
+Apache License 2.0
