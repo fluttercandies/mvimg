@@ -11,16 +11,27 @@ class _Range {
   _Range(this.start, this.end);
 }
 
-/// Just support jpeg + mp4
+/// A class for decoding mvimg files, which are composed of a jpeg image and an mp4 video.
+/// Support like this:
+/// - `MVIMG_XXXX.jpg`
+/// - `XXXX.MP.jpg`
 class Mvimg {
+  /// The input buffer.
+  ///
+  /// See also:
+  /// [BufferInput] of `buff` package.
   final BufferInput input;
 
+  /// Creates a [Mvimg] from a [BufferInput].
   Mvimg(this.input);
 
   bool _isMvImg = false;
 
   _Range? _videoRange;
 
+  /// Decodes the mvimg file.
+  ///
+  /// Just call this method after, the [isMvimg], [getImageBytes] or [getVideoBytes] is valid.
   void decode() {
     try {
       _readContent();
@@ -126,21 +137,30 @@ class Mvimg {
     throw Exception('Can not find video range');
   }
 
+  /// Closes the input buffer.
+  ///
+  /// Must call this method after use.
   void dispose() {
     input.close();
   }
 
+  /// Returns true if the file is a mvimg or motion photo file.
   bool isMvimg() {
     return _isMvImg;
   }
 
+  /// Returns the offset of the start of the video in the file.
   int get videoStartOffset => _videoRange?.start ?? 0;
+
+  /// Returns the offset of the end of the video in the file.
   int get videoEndOffset => _videoRange?.end ?? input.length;
 
+  /// Returns the bytes of the jpeg image in the file.
   List<int> getImageBytes() {
     return input.getBytes(0, videoStartOffset);
   }
 
+  /// Returns the bytes of the mp4 video in the file.
   List<int> getVideoBytes() {
     if (_isMvImg) {
       return input.getBytes(videoStartOffset, videoEndOffset);

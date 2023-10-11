@@ -1,6 +1,6 @@
 name: mvimg
 description: A library to split mvimg(android motion video) file.
-version: 1.1.0
+version: 1.1.1
 repository: https://github.com/caijinglong/mvimg
 
 environment:
