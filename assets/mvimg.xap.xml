@@ -1,0 +1,12 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:MiCamera="http://ns.xiaomi.com/photos/1.0/camera/"
+      GCamera:MicroVideoVersion="1"
+      GCamera:MicroVideo="1"
+      GCamera:MicroVideoOffset="3507133"
+      GCamera:MicroVideoPresentationTimestampUs="905581"
+      MiCamera:XMPMeta="&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;"/>
+  </rdf:RDF>
+</x:xmpmeta>

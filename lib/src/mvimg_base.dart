@@ -81,23 +81,49 @@ class Mvimg {
   }
 
   void _readVideoRange(List<int> xapContent) {
+    final fileLength = input.length;
+
     final text = ascii.decode(xapContent);
     final document = XmlDocument.parse(text);
     final root = document.rootElement;
-
     final infoElement = root.firstElementChild?.firstElementChild;
-
     final videoOffset = infoElement?.getAttribute('GCamera:MicroVideoOffset');
 
-    if (videoOffset == null) {
-      throw Exception('Can not find video offset');
+    if (videoOffset != null) {
+      final videoOffsetInt = int.parse(videoOffset);
+
+      _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+      return;
     }
 
-    final videoOffsetInt = int.parse(videoOffset);
+    final isMotionPhoto =
+        infoElement?.getAttribute('GCamera:MotionPhoto') == '1';
 
-    final fileLength = input.length;
+    if (isMotionPhoto) {
+      final children =
+          infoElement?.firstElementChild?.firstElementChild?.childElements;
 
-    _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+      if (children != null) {
+        for (final item in children) {
+          final container = item.firstElementChild;
+          final mimeType = container?.getAttribute('Item:Mime');
+
+          if (mimeType == 'video/mp4') {
+            final length = container?.getAttribute('Item:Length');
+
+            if (length == null) {
+              throw Exception('Can not find video length');
+            }
+
+            final videoOffsetInt = int.parse(length);
+            _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+            return;
+          }
+        }
+      }
+    }
+
+    throw Exception('Can not find video range');
   }
 
   void dispose() {

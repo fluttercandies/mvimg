@@ -7,7 +7,10 @@ It like livephoto in iphone.
 
 The file is composed of two files, jpg and mp4.
 
-Usually, the jpg name is MVIMG_XXXXX.jpg.
+Usually, the jpg name is `MVIMG_XXXXX.jpg`.
+Or, the name is `xxxx.MP.jpg`.
+
+For information about their differences, please refer [here][issue], or view the [xap file in assets][xap].
 
 ## Usage
 
@@ -59,3 +62,6 @@ void main() {
 ## License
 
 Apache License 2.0
+
+[issue]: https://github.com/SimpleMobileTools/Simple-Gallery/issues/1426#issuecomment-982855006
+[xap]: https://github.com/CaiJingLong/mvimg/tree/main/assets

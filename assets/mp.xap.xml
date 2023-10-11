@@ -1,0 +1,32 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+        xmlns:xmpNote="http://ns.adobe.com/xmp/note/"
+      GCamera:MotionPhoto="1"
+      GCamera:MotionPhotoVersion="1"
+      GCamera:MotionPhotoPresentationTimestampUs="1314346"
+      xmpNote:HasExtendedXMP="443592FF0E9C46CB8B0712C4D88960E9">
+      <Container:Directory>
+        <rdf:Seq>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Mime="image/jpeg"
+              Item:Semantic="Primary"
+              Item:Length="0"
+              Item:Padding="0"/>
+          </rdf:li>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Mime="video/mp4"
+              Item:Semantic="MotionPhoto"
+              Item:Length="2708598"
+              Item:Padding="0"/>
+          </rdf:li>
+        </rdf:Seq>
+      </Container:Directory>
+    </rdf:Description>
+  </rdf:RDF>
+</x:xmpmeta>

@@ -1,0 +1,162 @@
+# Ouput by 'exiftool -a test.MP.jpg > mp.jpg.exif'
+# The file have 2708598 bytes video
+
+ExifTool Version Number         : 12.60
+File Name                       : test.MP.jpg
+Directory                       : .
+File Size                       : 4.6 MB
+File Modification Date/Time     : 2023:10:11 08:42:39+08:00
+File Access Date/Time           : 2023:10:11 08:42:50+08:00
+File Inode Change Date/Time     : 2023:10:11 08:42:49+08:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+Exif Byte Order                 : Little-endian (Intel, II)
+Image Width                     : 3840
+Image Height                    : 2160
+Make                            : Google
+Camera Model Name               : Pixel 3a
+Orientation                     : Rotate 270 CW
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Software                        : HDR+ 1.0.450594208zd
+Modify Date                     : 2023:04:25 22:55:49
+Y Cb Cr Positioning             : Centered
+Exposure Time                   : 1/30
+F Number                        : 1.8
+Exposure Program                : Program AE
+ISO                             : 506
+Exif Version                    : 0232
+Date/Time Original              : 2023:04:25 22:55:49
+Create Date                     : 2023:04:25 22:55:49
+Offset Time                     : -07:00
+Offset Time Original            : -07:00
+Offset Time Digitized           : -07:00
+Components Configuration        : Y, Cb, Cr, -
+Shutter Speed Value             : 1/30
+Aperture Value                  : 1.8
+Brightness Value                : -0.74
+Exposure Compensation           : 0
+Max Aperture Value              : 1.8
+Subject Distance                : 0.114 m
+Metering Mode                   : Center-weighted average
+Flash                           : Off, Did not fire
+Focal Length                    : 4.4 mm
+Sub Sec Time                    : 256
+Sub Sec Time Original           : 256
+Sub Sec Time Digitized          : 256
+Flashpix Version                : 0100
+Color Space                     : sRGB
+Exif Image Width                : 3840
+Exif Image Height               : 2160
+Interoperability Index          : R98 - DCF basic file (sRGB)
+Interoperability Version        : 0100
+Sensing Method                  : One-chip color area
+Scene Type                      : Directly photographed
+Custom Rendered                 : Custom
+Exposure Mode                   : Auto
+White Balance                   : Auto
+Digital Zoom Ratio              : 0
+Focal Length In 35mm Format     : 27 mm
+Scene Capture Type              : Standard
+Contrast                        : Normal
+Saturation                      : Normal
+Sharpness                       : Normal
+Subject Distance Range          : Macro
+Lens Make                       : Google
+Lens Model                      : Pixel 3a back camera 4.44mm f/1.8
+Composite Image                 : Composite Image Captured While Shooting
+GPS Latitude Ref                : North
+GPS Latitude                    : 47 deg 37' 29.36"
+GPS Longitude Ref               : West
+GPS Longitude                   : 122 deg 18' 24.90"
+GPS Altitude Ref                : Above Sea Level
+GPS Altitude                    : 94.8 m
+GPS Time Stamp                  : 05:55:45
+GPS Img Direction Ref           : Magnetic North
+GPS Img Direction               : 0
+GPS Date Stamp                  : 2023:04:26
+Image Width                     : 480
+Image Height                    : 270
+Compression                     : JPEG (old-style)
+Orientation                     : Horizontal (normal)
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Thumbnail Offset                : 1344
+Thumbnail Length                : 17259
+XMP Toolkit                     : Adobe XMP Core 5.1.0-jc003
+Motion Photo                    : 1
+Motion Photo Version            : 1
+Motion Photo Presentation Timestamp Us: 1314346
+Has Extended XMP                : 443592FF0E9C46CB8B0712C4D88960E9
+Directory Item Mime             : image/jpeg
+Directory Item Semantic         : Primary
+Directory Item Length           : 0
+Directory Item Padding          : 0
+Directory Item Mime             : video/mp4
+Directory Item Semantic         : MotionPhoto
+Directory Item Length           : 2708598
+Directory Item Padding          : 0
+JFIF Version                    : 1.02
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Profile CMM Type                : 
+Profile Version                 : 4.0.0
+Profile Class                   : Display Device Profile
+Color Space Data                : RGB
+Profile Connection Space        : XYZ
+Profile Date Time               : 2016:12:08 09:38:28
+Profile File Signature          : acsp
+Primary Platform                : Unknown ()
+CMM Flags                       : Not Embedded, Independent
+Device Manufacturer             : Google
+Device Model                    : 
+Device Attributes               : Reflective, Glossy, Positive, Color
+Rendering Intent                : Perceptual
+Connection Space Illuminant     : 0.9642 1 0.82491
+Profile Creator                 : Google
+Profile ID                      : 75e1a6b13c34376310c8ab660632a28a
+Profile Description             : sRGB IEC61966-2.1
+Profile Copyright               : Copyright (c) 2016 Google Inc.
+Media White Point               : 0.95045 1 1.08905
+Media Black Point               : 0 0 0
+Red Matrix Column               : 0.43604 0.22249 0.01392
+Green Matrix Column             : 0.38512 0.7169 0.09706
+Blue Matrix Column              : 0.14305 0.06061 0.71391
+Red Tone Reproduction Curve     : (Binary data 32 bytes, use -b option to extract)
+Chromatic Adaptation            : 1.04788 0.02292 -0.05019 0.02959 0.99048 -0.01704 -0.00922 0.01508 0.75168
+Blue Tone Reproduction Curve    : (Binary data 32 bytes, use -b option to extract)
+Green Tone Reproduction Curve   : (Binary data 32 bytes, use -b option to extract)
+Image Width                     : 3840
+Image Height                    : 2160
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+HDRP Maker Note                 : (Binary data 18868 bytes, use -b option to extract)
+Shot Log Data                   : (Binary data 293 bytes, use -b option to extract)
+Aperture                        : 1.8
+Image Size                      : 3840x2160
+Megapixels                      : 8.3
+Scale Factor To 35 mm Equivalent: 6.1
+Shutter Speed                   : 1/30
+Create Date                     : 2023:04:25 22:55:49.256-07:00
+Date/Time Original              : 2023:04:25 22:55:49.256-07:00
+Modify Date                     : 2023:04:25 22:55:49.256-07:00
+Thumbnail Image                 : (Binary data 17259 bytes, use -b option to extract)
+GPS Altitude                    : 94.8 m Above Sea Level
+GPS Date/Time                   : 2023:04:26 05:55:45Z
+GPS Latitude                    : 47 deg 37' 29.36" N
+GPS Longitude                   : 122 deg 18' 24.90" W
+Circle Of Confusion             : 0.005 mm
+Depth Of Field                  : 0.011 m (0.109 - 0.120 m)
+Field Of View                   : 67.4 deg
+Focal Length                    : 4.4 mm (35 mm equivalent: 27.0 mm)
+GPS Position                    : 47 deg 37' 29.36" N, 122 deg 18' 24.90" W
+Hyperfocal Distance             : 2.22 m
+Light Value                     : 4.3
+Lens ID                         : Pixel 3a back camera 4.44mm f/1.8

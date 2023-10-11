@@ -1,0 +1,86 @@
+ExifTool Version Number         : 12.60
+File Name                       : test.jpg
+Directory                       : .
+File Size                       : 8.8 MB
+File Modification Date/Time     : 2023:10:10 16:10:50+08:00
+File Access Date/Time           : 2023:10:10 16:28:38+08:00
+File Inode Change Date/Time     : 2023:10:10 16:11:01+08:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+Exif Byte Order                 : Big-endian (Motorola, MM)
+Image Width                     : 3000
+Image Height                    : 4000
+Resolution Unit                 : inches
+Make                            : Xiaomi
+Camera Model Name               : M2012K11C
+Modify Date                     : 2023:08:21 12:04:42
+Orientation                     : Horizontal (normal)
+Y Cb Cr Positioning             : Centered
+ISO                             : 222
+Exposure Program                : Not Defined
+F Number                        : 1.8
+Exposure Time                   : 1/120
+Sensing Method                  : Unknown (0)
+Sub Sec Time Digitized          : 015029
+Offset Time Original            : +08:00
+Sub Sec Time Original           : 015029
+Offset Time                     : +08:00
+Sub Sec Time                    : 015029
+Focal Length                    : 6.0 mm
+Flash                           : Off, Did not fire
+Light Source                    : D65
+Metering Mode                   : Center-weighted average
+Scene Capture Type              : Standard
+Interoperability Index          : R98 - DCF basic file (sRGB)
+Interoperability Version        : 0100
+Focal Length In 35mm Format     : 0 mm
+Max Aperture Value              : 1.7
+Create Date                     : 2023:08:21 12:04:42
+Exposure Compensation           : 0
+Exif Image Height               : 4000
+White Balance                   : Auto
+Date/Time Original              : 2023:08:21 12:04:42
+Brightness Value                : 0
+Exif Image Width                : 3000
+Exposure Mode                   : Auto
+Aperture Value                  : 1.7
+Components Configuration        : Y, Cb, Cr, -
+Color Space                     : sRGB
+Scene Type                      : Unknown (0)
+Shutter Speed Value             : 1/120
+Exif Version                    : 0220
+Flashpix Version                : 0100
+X Resolution                    : 72
+Y Resolution                    : 72
+Thumbnail Offset                : 2029
+Thumbnail Length                : 22230
+Compression                     : JPEG (old-style)
+Resolution Unit                 : inches
+X Resolution                    : 72
+Y Resolution                    : 72
+Exif Image Height               : 320
+Exif Image Width                : 240
+XMP Toolkit                     : Adobe XMP Core 5.1.0-jc003
+Micro Video Version             : 1
+Micro Video                     : 1
+Micro Video Offset              : 3507133
+Micro Video Presentation Timestamp Us: 905581
+XMP Meta                        : <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+Image Width                     : 3000
+Image Height                    : 4000
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Aperture                        : 1.8
+Image Size                      : 3000x4000
+Megapixels                      : 12.0
+Shutter Speed                   : 1/120
+Create Date                     : 2023:08:21 12:04:42.015029
+Date/Time Original              : 2023:08:21 12:04:42.015029+08:00
+Modify Date                     : 2023:08:21 12:04:42.015029+08:00
+Thumbnail Image                 : (Binary data 22230 bytes, use -b option to extract)
+Focal Length                    : 6.0 mm
+Light Value                     : 7.4
