@@ -15,6 +15,17 @@ void main() {
     final img = mvimg.getImageBytes();
     final video = mvimg.getVideoBytes();
 
+    final imgOffsetStart = 0;
+    final imgOffsetEnd = mvimg.videoStartOffset;
+
+    final videoOffsetStart = mvimg.videoStartOffset;
+    final videoOffsetEnd = mvimg.videoEndOffset;
+
+    print('imgOffsetStart: $imgOffsetStart');
+    print('imgOffsetEnd: $imgOffsetEnd');
+    print('videoOffsetStart: $videoOffsetStart');
+    print('videoOffsetEnd: $videoOffsetEnd');
+
     final videoOutputPath = 'assets/split/output.mp4';
     final imgOutputPath = 'assets/split/output.jpg';
 
