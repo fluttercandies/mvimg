@@ -23,6 +23,10 @@ dependencies:
 
 ### Code
 
+#### For pure dart
+
+The `mvimg` package is pure dart, so you can use it in flutter or other dart project.
+
 ```dart
 import 'dart:io';
 
@@ -59,9 +63,17 @@ void main() {
 
 ```
 
+#### For flutter
+
+You can see the [flutter example][flutter_example] to learn how to use it in flutter.
+
+The [main.dart][flutter_example_main] of flutter.
+
 ## License
 
 Apache License 2.0
 
 [issue]: https://github.com/SimpleMobileTools/Simple-Gallery/issues/1426#issuecomment-982855006
 [xap]: https://github.com/CaiJingLong/mvimg/tree/main/assets
+[flutter_example]: example/mvimg_flutter_example
+[flutter_example_main]: example/mvimg_flutter_example/lib/main.dart
