@@ -77,14 +77,21 @@ class _PreviewMvimgPageState extends State<PreviewMvimgPage> {
       appBar: AppBar(
         title: const Text('preview mvimg'),
       ),
-      body: _buildBody(),
+      body: Center(child: _buildBody()),
     );
   }
 
   Widget _buildBody() {
+    final videoBytes = _videoBytes;
+    final imageBytes = _imageBytes;
+
+    if (videoBytes == null || imageBytes == null) {
+      return const Text('loading...');
+    }
+
     return VideoAutoPreviewWidget(
-      videoBytes: _videoBytes!,
-      previewBytes: _imageBytes!,
+      videoBytes: videoBytes,
+      previewBytes: imageBytes,
     );
   }
 }
@@ -119,6 +126,8 @@ class _VideoAutoPreviewWidgetState extends State<VideoAutoPreviewWidget> {
     final controller = VideoPlayerController.file(file);
     this.controller = controller;
     await controller.initialize();
+
+    setState(() {});
   }
 
   @override
