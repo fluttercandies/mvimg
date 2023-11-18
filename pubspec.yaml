@@ -12,5 +12,5 @@ dev_dependencies:
 
 dependencies:
   buff: ^1.0.1
-  collection: ^1.18.0
+  collection: ^1.0.0
   xml: ^6.4.2
