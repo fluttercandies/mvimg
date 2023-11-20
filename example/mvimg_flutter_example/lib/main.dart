@@ -42,8 +42,6 @@ class _PreviewMvimgPageState extends State<PreviewMvimgPage> {
   Uint8List? _imageBytes;
   Uint8List? _videoBytes;
 
-  bool playing = false;
-
   @override
   void initState() {
     super.initState();
