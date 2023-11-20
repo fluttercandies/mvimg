@@ -77,7 +77,14 @@ class _PreviewMvimgPageState extends State<PreviewMvimgPage> {
       appBar: AppBar(
         title: const Text('preview mvimg'),
       ),
-      body: Center(child: _buildBody()),
+      body: Center(
+          child: Column(
+        children: [
+          const Text('The file is a jpeg file with a motion photo.'),
+          const Text('Tap to play the motion photo.'),
+          _buildBody(),
+        ],
+      )),
     );
   }
 
