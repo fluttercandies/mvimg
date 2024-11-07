@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Feat: Add [MvimgIO] class.
+- Feat: Add [getXapBytes] method to [Mvimg] class.
+
 ## 1.1.1
 
 - Add dartdoc for classes.

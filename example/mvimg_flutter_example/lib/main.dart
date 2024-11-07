@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mvimg/mvimg.dart';
-import 'package:buff/buff.dart';
 import 'package:mvimg_example/const/resource.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';

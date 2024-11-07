@@ -11,10 +11,15 @@ class _Range {
   _Range(this.start, this.end);
 }
 
-/// A class for decoding mvimg files, which are composed of a jpeg image and an mp4 video.
+/// A class for decoding motion photo files,
+/// which are composed of a jpeg image and an mp4 video.
+///
 /// Support like this:
 /// - `MVIMG_XXXX.jpg`
 /// - `XXXX.MP.jpg`
+///
+/// About Motion photo for Android:
+/// - [Motion photo](https://developer.android.com/media/platform/motion-photo-format)
 class Mvimg {
   /// The input buffer.
   ///
@@ -28,6 +33,11 @@ class Mvimg {
   bool _isMvImg = false;
 
   _Range? _videoRange;
+
+  /// The range of the xap in the file.
+  ///
+  /// The xap is a xml file that contains the metadata of the motion photo file.
+  _Range? _xapRange;
 
   /// Decodes the mvimg file.
   ///
@@ -79,6 +89,8 @@ class Mvimg {
         int end = contentOffset + contentLength;
 
         final content = input.getBytes(contentOffset, end);
+
+        _xapRange = _Range(contentOffset, end);
 
         _isMvImg = true;
 
@@ -155,6 +167,12 @@ class Mvimg {
   /// Returns the offset of the end of the video in the file.
   int get videoEndOffset => _videoRange?.end ?? input.length;
 
+  /// Returns the offset of the start of the xap in the file.
+  int get xapStartOffset => _xapRange?.start ?? 0;
+
+  /// Returns the offset of the end of the xap in the file.
+  int get xapEndOffset => _xapRange?.end ?? input.length;
+
   /// Returns the bytes of the jpeg image in the file.
   List<int> getImageBytes() {
     return input.getBytes(0, videoStartOffset);
@@ -166,5 +184,10 @@ class Mvimg {
       return input.getBytes(videoStartOffset, videoEndOffset);
     }
     throw Exception('Not a mvimg file');
+  }
+
+  /// Returns the bytes of the xap in the file.
+  List<int> getXapBytes() {
+    return input.getBytes(xapStartOffset, xapEndOffset);
   }
 }

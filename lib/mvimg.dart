@@ -5,6 +5,9 @@
 /// - `MVIMG_XXXX.jpg`
 /// - `XXXX.MP.jpg`
 ///
+/// - The Motion Photo format to see the documentation on the Android side:
+///   [Motion photo](https://developer.android.com/media/platform/motion-photo-format)
+///
 /// Example:
 ///
 /// ```dart
@@ -44,3 +47,4 @@
 library mvimg;
 
 export 'src/mvimg_base.dart';
+export 'package:buff/buff.dart';
