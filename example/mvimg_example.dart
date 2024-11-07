@@ -48,7 +48,6 @@ void main() {
       videoFile.writeAsBytesSync(video);
       imgFile.writeAsBytesSync(img);
       xapFile.writeAsBytesSync(mvimg.getXapBytes());
-      
     } finally {
       mvimg.dispose();
     }
