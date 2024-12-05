@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Feat: Add callback for [Mvimg] class.
+
 ## 1.2.0
 
 - Feat: Add [MvimgIO] class.
