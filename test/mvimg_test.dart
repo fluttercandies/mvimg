@@ -3,6 +3,33 @@ import 'package:mvimg/mvimg.dart';
 import 'package:mvimg/mvimg_io.dart';
 import 'package:test/test.dart';
 
+class ExampleMvImgCallbackAdapter extends MvImgCallbackAdapter {
+  var decodeStartCount = 0;
+  var decodeEndCount = 0;
+  var errorCount = 0;
+  var disposeCount = 0;
+
+  @override
+  void onDecodeStart(Mvimg mvimg) {
+    decodeStartCount++;
+  }
+
+  @override
+  void onDecodeEnd(Mvimg mvimg) {
+    decodeEndCount++;
+  }
+
+  @override
+  void onError(Mvimg mvimg, dynamic e, StackTrace? stackTrace) {
+    errorCount++;
+  }
+
+  @override
+  void onDispose(Mvimg mvimg) {
+    disposeCount++;
+  }
+}
+
 void main() {
   const testDataList = [
     _TestData(
@@ -40,6 +67,24 @@ void main() {
         print('img: ${img.length}, video: ${video.length}');
 
         mvimg.dispose();
+      });
+    }
+  });
+
+  group('Test for callback', () {
+    for (final testData in testDataList) {
+      final path = testData.path;
+      test('Test callback for $path', () {
+        final mvimg = Mvimg(FileBufferInput.fromPath(path));
+        final adapter = ExampleMvImgCallbackAdapter();
+        mvimg.setCallback(adapter);
+        mvimg.decode();
+        mvimg.dispose();
+
+        expect(adapter.decodeStartCount, equals(1));
+        expect(adapter.decodeEndCount, equals(1));
+        expect(adapter.errorCount, equals(0));
+        expect(adapter.disposeCount, equals(1));
       });
     }
   });

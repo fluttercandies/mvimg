@@ -11,6 +11,41 @@ class _Range {
   _Range(this.start, this.end);
 }
 
+/// A mixin for callback methods of [Mvimg].
+///
+/// See also:
+/// [MvImgCallbackAdapter]
+mixin MvImgCallback {
+  /// The method called when the decoding starts.
+  void onDecodeStart(Mvimg mvimg);
+
+  /// The method called when the decoding ends.
+  void onDecodeEnd(Mvimg mvimg);
+
+  /// The method called when an error occurs during decoding.
+  void onError(Mvimg mvimg, dynamic e, StackTrace? stackTrace);
+
+  /// The method called when the [Mvimg] is disposed.
+  void onDispose(Mvimg mvimg);
+}
+
+/// A default implementation of [MvImgCallback].
+///
+/// Every method is empty.
+class MvImgCallbackAdapter implements MvImgCallback {
+  @override
+  void onDecodeStart(Mvimg mvimg) {}
+
+  @override
+  void onDecodeEnd(Mvimg mvimg) {}
+
+  @override
+  void onError(Mvimg mvimg, dynamic e, StackTrace? stackTrace) {}
+
+  @override
+  void onDispose(Mvimg mvimg) {}
+}
+
 /// A class for decoding motion photo files,
 /// which are composed of a jpeg image and an mp4 video.
 ///
@@ -21,6 +56,8 @@ class _Range {
 /// About Motion photo for Android:
 /// - [Motion photo](https://developer.android.com/media/platform/motion-photo-format)
 class Mvimg {
+  MvImgCallback? callback;
+
   /// The input buffer.
   ///
   /// See also:
@@ -39,14 +76,24 @@ class Mvimg {
   /// The xap is a xml file that contains the metadata of the motion photo file.
   _Range? _xapRange;
 
+  void setCallback(MvImgCallback callback) {
+    this.callback = callback;
+  }
+
+  void removeCallback() {
+    callback = null;
+  }
+
   /// Decodes the mvimg file.
   ///
   /// Just call this method after, the [isMvimg], [getImageBytes] or [getVideoBytes] is valid.
   void decode() {
     try {
+      callback?.onDecodeStart(this);
       _readContent();
-    } catch (e) {
-      print(e);
+      callback?.onDecodeEnd(this);
+    } catch (e, stackTrace) {
+      callback?.onError(this, e, stackTrace);
     }
   }
 
@@ -58,15 +105,19 @@ class Mvimg {
     offset += 2;
 
     if (header[0] != 0xFF || header[1] != 0xD8) {
-      throw Exception('Not a jpeg file');
+      final e = Exception('Not a jpeg file');
+      callback?.onError(this, e, null);
+      throw e;
     }
 
     // load app1 type, for get xmp
     while (true) {
       final marker = input.getBytes(offset, offset + 2);
       if (marker[0] != 0xFF) {
-        throw Exception(
+        final e = Exception(
             'Can not find exif, offset: $offset, marker: ${marker[0]}');
+        callback?.onError(this, e, null);
+        throw e;
       }
       offset += 2;
 
@@ -104,55 +155,60 @@ class Mvimg {
   }
 
   void _readVideoRange(List<int> xapContent) {
-    final fileLength = input.length;
+    try {
+      final fileLength = input.length;
 
-    final text = ascii.decode(xapContent);
-    final document = XmlDocument.parse(text);
-    final root = document.rootElement;
-    final infoElement = root.firstElementChild?.firstElementChild;
-    final videoOffset = infoElement?.getAttribute('GCamera:MicroVideoOffset');
+      final text = ascii.decode(xapContent);
+      final document = XmlDocument.parse(text);
+      final root = document.rootElement;
+      final infoElement = root.firstElementChild?.firstElementChild;
+      final videoOffset = infoElement?.getAttribute('GCamera:MicroVideoOffset');
 
-    if (videoOffset != null) {
-      final videoOffsetInt = int.parse(videoOffset);
+      if (videoOffset != null) {
+        final videoOffsetInt = int.parse(videoOffset);
 
-      _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
-      return;
-    }
+        _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+        return;
+      }
 
-    final isMotionPhoto =
-        infoElement?.getAttribute('GCamera:MotionPhoto') == '1';
+      final isMotionPhoto =
+          infoElement?.getAttribute('GCamera:MotionPhoto') == '1';
 
-    if (isMotionPhoto) {
-      final children =
-          infoElement?.firstElementChild?.firstElementChild?.childElements;
+      if (isMotionPhoto) {
+        final children =
+            infoElement?.firstElementChild?.firstElementChild?.childElements;
 
-      if (children != null) {
-        for (final item in children) {
-          final container = item.firstElementChild;
-          final mimeType = container?.getAttribute('Item:Mime');
+        if (children != null) {
+          for (final item in children) {
+            final container = item.firstElementChild;
+            final mimeType = container?.getAttribute('Item:Mime');
 
-          if (mimeType == 'video/mp4') {
-            final length = container?.getAttribute('Item:Length');
+            if (mimeType == 'video/mp4') {
+              final length = container?.getAttribute('Item:Length');
 
-            if (length == null) {
-              throw Exception('Can not find video length');
+              if (length == null) {
+                throw Exception('Can not find video length');
+              }
+
+              final videoOffsetInt = int.parse(length);
+              _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+              return;
             }
-
-            final videoOffsetInt = int.parse(length);
-            _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
-            return;
           }
         }
       }
+    } catch (e, stackTrace) {
+      final e = Exception('Can not find video range');
+      callback?.onError(this, e, stackTrace);
+      throw e;
     }
-
-    throw Exception('Can not find video range');
   }
 
   /// Closes the input buffer.
   ///
   /// Must call this method after use.
   void dispose() {
+    callback?.onDispose(this);
     input.close();
   }
 

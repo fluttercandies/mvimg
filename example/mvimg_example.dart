@@ -3,6 +3,29 @@ import 'dart:io';
 import 'package:buff/buff_io.dart';
 import 'package:mvimg/mvimg.dart';
 
+class ExampleMvImgCallbackAdapter extends MvImgCallbackAdapter {
+  @override
+  void onDecodeStart(Mvimg mvimg) {
+    print('onDecodeStart');
+  }
+
+  @override
+  void onDecodeEnd(Mvimg mvimg) {
+    print('onDecodeEnd');
+  }
+
+  @override
+  void onError(Mvimg mvimg, dynamic e, StackTrace? stackTrace) {
+    print('onError: $e');
+    print('stackTrace: $stackTrace');
+  }
+
+  @override
+  void onDispose(Mvimg mvimg) {
+    print('onDispose');
+  }
+}
+
 void main() {
   final assetList = [
     'assets/test.jpg',
@@ -13,6 +36,7 @@ void main() {
   for (final asset in assetList) {
     final fileName = asset.split('/').last;
     final mvimg = Mvimg(FileBufferInput.fromPath(asset));
+    mvimg.setCallback(ExampleMvImgCallbackAdapter());
     mvimg.decode();
     try {
       if (!mvimg.isMvimg()) {
