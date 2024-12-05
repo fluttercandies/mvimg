@@ -6,17 +6,17 @@ import 'package:mvimg/mvimg.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Mvimg Performance Tests', () {
+  group('Performance Tests (Mvimg 性能测试)', () {
     late File testFile;
     late List<int> testData;
 
     setUpAll(() async {
-      // 注意：需要准备一个测试用的运动照片文件
+      // Note: Prepare a test motion photo file (需要准备一个测试用的运动照片文件)
       testFile = File('assets/test.jpg');
       testData = await testFile.readAsBytes();
     });
 
-    test('解码性能测试', () {
+    test('Decoding Performance Test (解码性能测试)', () {
       final stopwatch = Stopwatch()..start();
 
       for (var i = 0; i < 100; i++) {
@@ -26,14 +26,14 @@ void main() {
       }
 
       stopwatch.stop();
-      print('100次解码操作耗时: ${stopwatch.elapsedMilliseconds}ms');
-      print('平均每次解码耗时: ${stopwatch.elapsedMilliseconds / 100}ms');
+      print('Time for 100 decoding operations (100次解码操作耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print('Average time per decode (平均每次解码耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(5000),
-          reason: '100次解码操作应在5秒内完成');
+          reason: '100 decoding operations should complete within 5 seconds (100次解码操作应在5秒内完成)');
     });
 
-    test('提取图片和视频性能测试', () {
+    test('Image and Video Extraction Performance Test (提取图片和视频性能测试)', () {
       final mvimg = Mvimg(BufferInput.memory(testData));
       mvimg.decode();
 
@@ -50,16 +50,16 @@ void main() {
       }
 
       stopwatch.stop();
-      print('50次提取图片和视频耗时: ${stopwatch.elapsedMilliseconds}ms');
-      print('平均每次提取耗时: ${stopwatch.elapsedMilliseconds / 50}ms');
+      print('Time for 50 extraction operations (50次提取图片和视频耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print('Average time per extraction (平均每次提取耗时): ${stopwatch.elapsedMilliseconds / 50}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(3000),
-          reason: '50次提取操作应在3秒内完成');
+          reason: '50 extraction operations should complete within 3 seconds (50次提取操作应在3秒内完成)');
 
       mvimg.dispose();
     });
 
-    test('XAP 元数据读取性能测试', () {
+    test('XAP Metadata Reading Performance Test (XAP 元数据读取性能测试)', () {
       final mvimg = Mvimg(BufferInput.memory(testData));
       mvimg.decode();
 
@@ -73,18 +73,18 @@ void main() {
       }
 
       stopwatch.stop();
-      print('100次读取 XAP 元数据耗时: ${stopwatch.elapsedMilliseconds}ms');
-      print('平均每次读取耗时: ${stopwatch.elapsedMilliseconds / 100}ms');
+      print('Time for 100 XAP metadata reads (100次读取 XAP 元数据耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print('Average time per read (平均每次读取耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(1000),
-          reason: '100次 XAP 读取操作应在1秒内完成');
+          reason: '100 XAP reading operations should complete within 1 second (100次 XAP 读取操作应在1秒内完成)');
 
       mvimg.dispose();
     });
 
     final testOutputFileList = <File>[];
 
-    test('全流程性能测试', () async {
+    test('End-to-End Performance Test (全流程性能测试)', () async {
       final stopwatch = Stopwatch()..start();
 
       final file = File('assets/test.jpg');
@@ -116,8 +116,8 @@ void main() {
       }
 
       stopwatch.stop();
-      print('100次全流程操作耗时: ${stopwatch.elapsedMilliseconds}ms');
-      print('平均每次操作耗时: ${stopwatch.elapsedMilliseconds / 100}ms');
+      print('Time for 100 end-to-end operations (100次全流程操作耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print('Average time per operation (平均每次操作耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       for (final file in testOutputFileList) {
         file.deleteSync();
