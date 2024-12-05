@@ -26,11 +26,14 @@ void main() {
       }
 
       stopwatch.stop();
-      print('Time for 100 decoding operations (100次解码操作耗时): ${stopwatch.elapsedMilliseconds}ms');
-      print('Average time per decode (平均每次解码耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
+      print(
+          'Time for 100 decoding operations (100次解码操作耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print(
+          'Average time per decode (平均每次解码耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(5000),
-          reason: '100 decoding operations should complete within 5 seconds (100次解码操作应在5秒内完成)');
+          reason:
+              '100 decoding operations should complete within 5 seconds (100次解码操作应在5秒内完成)');
     });
 
     test('Image and Video Extraction Performance Test (提取图片和视频性能测试)', () {
@@ -50,11 +53,14 @@ void main() {
       }
 
       stopwatch.stop();
-      print('Time for 50 extraction operations (50次提取图片和视频耗时): ${stopwatch.elapsedMilliseconds}ms');
-      print('Average time per extraction (平均每次提取耗时): ${stopwatch.elapsedMilliseconds / 50}ms');
+      print(
+          'Time for 50 extraction operations (50次提取图片和视频耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print(
+          'Average time per extraction (平均每次提取耗时): ${stopwatch.elapsedMilliseconds / 50}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(3000),
-          reason: '50 extraction operations should complete within 3 seconds (50次提取操作应在3秒内完成)');
+          reason:
+              '50 extraction operations should complete within 3 seconds (50次提取操作应在3秒内完成)');
 
       mvimg.dispose();
     });
@@ -73,11 +79,14 @@ void main() {
       }
 
       stopwatch.stop();
-      print('Time for 100 XAP metadata reads (100次读取 XAP 元数据耗时): ${stopwatch.elapsedMilliseconds}ms');
-      print('Average time per read (平均每次读取耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
+      print(
+          'Time for 100 XAP metadata reads (100次读取 XAP 元数据耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print(
+          'Average time per read (平均每次读取耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       expect(stopwatch.elapsedMilliseconds, lessThan(1000),
-          reason: '100 XAP reading operations should complete within 1 second (100次 XAP 读取操作应在1秒内完成)');
+          reason:
+              '100 XAP reading operations should complete within 1 second (100次 XAP 读取操作应在1秒内完成)');
 
       mvimg.dispose();
     });
@@ -116,8 +125,10 @@ void main() {
       }
 
       stopwatch.stop();
-      print('Time for 100 end-to-end operations (100次全流程操作耗时): ${stopwatch.elapsedMilliseconds}ms');
-      print('Average time per operation (平均每次操作耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
+      print(
+          'Time for 100 end-to-end operations (100次全流程操作耗时): ${stopwatch.elapsedMilliseconds}ms');
+      print(
+          'Average time per operation (平均每次操作耗时): ${stopwatch.elapsedMilliseconds / 100}ms');
 
       for (final file in testOutputFileList) {
         file.deleteSync();
