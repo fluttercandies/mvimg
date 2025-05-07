@@ -66,16 +66,18 @@ void main() {
     });
 
     test('XAP Metadata Reading Performance Test (XAP 元数据读取性能测试)', () {
-      final mvimg = Mvimg(BufferInput.memory(testData));
-      mvimg.decode();
-
       final stopwatch = Stopwatch()..start();
 
       for (var i = 0; i < 100; i++) {
+        final mvimg = Mvimg(BufferInput.memory(testData));
+        mvimg.decode();
+
         if (mvimg.isMvimg()) {
           final xapBytes = mvimg.getXapBytes();
           expect(xapBytes.length, greaterThan(0));
         }
+
+        mvimg.dispose();
       }
 
       stopwatch.stop();
@@ -87,8 +89,6 @@ void main() {
       expect(stopwatch.elapsedMilliseconds, lessThan(1000),
           reason:
               '100 XAP reading operations should complete within 1 second (100次 XAP 读取操作应在1秒内完成)');
-
-      mvimg.dispose();
     });
 
     final testOutputFileList = <File>[];

@@ -46,5 +46,7 @@
 /// ```
 library mvimg;
 
+export 'src/mime_type.dart';
 export 'src/mvimg_base.dart';
+
 export 'package:buff/buff.dart';
