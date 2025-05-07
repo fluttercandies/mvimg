@@ -1,3 +1,9 @@
+# CHANGELOG
+
+## 1.4.0
+
+- Feat: Add [videoMimeType] and [videoMimeTypeEnum] properties.
+
 ## 1.3.0
 
 - Feat: Add callback for [Mvimg] class.

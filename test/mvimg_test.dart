@@ -115,6 +115,45 @@ void main() {
       });
     }
   });
+
+  group('Test for MvimgMimeTypes', () {
+    test('Test isSupported method', () {
+      expect(MvimgMimeTypes.isSupported('image/jpeg'), isTrue);
+      expect(MvimgMimeTypes.isSupported('image/heic'), isTrue);
+      expect(MvimgMimeTypes.isSupported('image/avif'), isTrue);
+      expect(MvimgMimeTypes.isSupported('video/mp4'), isTrue);
+      expect(MvimgMimeTypes.isSupported('video/quicktime'), isTrue);
+      expect(MvimgMimeTypes.isSupported('image/png'), isFalse);
+      expect(MvimgMimeTypes.isSupported('video/webm'), isFalse);
+      expect(MvimgMimeTypes.isSupported(''), isFalse);
+    });
+
+    test('Test mimeTypeToString method', () {
+      expect(MvimgMimeTypes.mimeTypeToString(MvimgMimeType.jpeg), equals('image/jpeg'));
+      expect(MvimgMimeTypes.mimeTypeToString(MvimgMimeType.heic), equals('image/heic'));
+      expect(MvimgMimeTypes.mimeTypeToString(MvimgMimeType.avif), equals('image/avif'));
+      expect(MvimgMimeTypes.mimeTypeToString(MvimgMimeType.mp4), equals('video/mp4'));
+      expect(MvimgMimeTypes.mimeTypeToString(MvimgMimeType.quicktime), equals('video/quicktime'));
+    });
+
+    test('Test stringToMimeType method', () {
+      expect(MvimgMimeTypes.stringToMimeType('image/jpeg'), equals(MvimgMimeType.jpeg));
+      expect(MvimgMimeTypes.stringToMimeType('image/heic'), equals(MvimgMimeType.heic));
+      expect(MvimgMimeTypes.stringToMimeType('image/avif'), equals(MvimgMimeType.avif));
+      expect(MvimgMimeTypes.stringToMimeType('video/mp4'), equals(MvimgMimeType.mp4));
+      expect(MvimgMimeTypes.stringToMimeType('video/quicktime'), equals(MvimgMimeType.quicktime));
+      
+      expect(() => MvimgMimeTypes.stringToMimeType('image/png'), throwsException);
+    });
+
+    test('Test MvimgMimeType extension', () {
+      expect(MvimgMimeType.jpeg.mimeType, equals('image/jpeg'));
+      expect(MvimgMimeType.heic.mimeType, equals('image/heic'));
+      expect(MvimgMimeType.avif.mimeType, equals('image/avif'));
+      expect(MvimgMimeType.mp4.mimeType, equals('video/mp4'));
+      expect(MvimgMimeType.quicktime.mimeType, equals('video/quicktime'));
+    });
+  });
 }
 
 // assets/split/test.MP.jpg:

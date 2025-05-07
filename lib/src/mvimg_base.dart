@@ -4,6 +4,8 @@ import 'package:buff/buff.dart';
 import 'package:collection/collection.dart';
 import 'package:xml/xml.dart';
 
+import 'mime_type.dart';
+
 class _Range {
   final int start;
   final int end;
@@ -75,6 +77,17 @@ class Mvimg {
   ///
   /// The xap is a xml file that contains the metadata of the motion photo file.
   _Range? _xapRange;
+
+  /// The mime type of the video.
+  String? _videoMimeType;
+
+  /// The mime type of the video.
+  MvimgMimeType? get videoMimeType {
+    if (_videoMimeType == null) {
+      return null;
+    }
+    return MvimgMimeTypes.stringToMimeType(_videoMimeType!);
+  }
 
   void setCallback(MvImgCallback callback) {
     this.callback = callback;
@@ -183,7 +196,11 @@ class Mvimg {
             final container = item.firstElementChild;
             final mimeType = container?.getAttribute('Item:Mime');
 
-            if (mimeType == 'video/mp4') {
+            if (mimeType == null) {
+              continue;
+            }
+
+            if (MvimgMimeTypes.isVideoSupported(mimeType)) {
               final length = container?.getAttribute('Item:Length');
 
               if (length == null) {
@@ -192,6 +209,7 @@ class Mvimg {
 
               final videoOffsetInt = int.parse(length);
               _videoRange = _Range(fileLength - videoOffsetInt, fileLength);
+              _videoMimeType = mimeType;
               return;
             }
           }
